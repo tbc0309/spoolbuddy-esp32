@@ -7,7 +7,8 @@ Platform: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x, 32 MiB Flash; Bambuddy 
 | Feature | Status |
 |---|---|
 | Display, touch and navigation | Passed on hardware |
-| BOOT sleep and touch wake | Passed; power consumption not measured |
+| BOOT sleep and touch wake | Passed using a black mask and zero brightness while retaining DSI scan; power consumption not measured |
+| Continuous 35-minute blanking | All 66 backend samples online with continuous uptime; touch restored the display without reboot |
 | TF configuration, NVS and boot without a card | Passed; timestamps, dual-bank persistence and fallback also tested in software |
 | TF firmware installation, reboot and boot confirmation | Passed on hardware |
 | Wi-Fi, registration, heartbeats and inventory reads | Passed on hardware |

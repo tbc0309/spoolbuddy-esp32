@@ -29,10 +29,15 @@ Host regression: compile and run `test_button.c` with a C compiler (assertions
 enabled). Screen blanking and touch wake have been checked on Rev3.x.
 Electrical power consumption has not been measured.
 
-Hardware limitation: the vendor schematic ties AP3032 backlight EN to the
-supply through a resistor. GPIO26 adjusts its feedback rather than switching
-EN. BSP `backlight_off()` merely requests zero PWM brightness. The board port
-also sends LCD display-off at zero brightness, but this does not establish
-that backlight power has been disconnected. LCD display-off is used together with zero brightness to blank the panel.
+Display blanking uses an opaque black system-layer mask and zero PWM brightness,
+while keeping the DSI panel scan and frame-complete interrupts active. This avoids
+turning the panel off underneath the adapter's asynchronous double-buffer waits.
+It does not disconnect backlight power: AP3032 EN is tied to the supply. Physical
+black level and long-duration wake reliability must be checked on the target board.
+
+The board logs a low-frequency blank-health message independently of LVGL and
+reports stalled LVGL progress / prolonged mutex waits. These diagnostics are
+serial-only and do not extend the backend statistics payload.
+
 
 Reference: https://files.waveshare.com/wiki/ESP32-P4-WIFI6-Touch-LCD-4.3/ESP32-P4-WIFI6-Touch-LCD-4.3-schematic.pdf

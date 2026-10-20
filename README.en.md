@@ -23,7 +23,7 @@ Settings → Updates fits on one screen. Checking for an update automatically do
 In an ESP-IDF v6.1 environment:
 
 ```powershell
-./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 6
+./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 7
 ./simulator/build.ps1 -Integration
 ./simulator/build/spoolbuddy_sim.exe --config ./simulator/runtime/local-bambuddy.json --connect
 ```

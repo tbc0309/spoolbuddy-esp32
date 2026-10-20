@@ -11,6 +11,7 @@
 #include "system_stats.h"
 #include "update.h"
 #include "lvgl.h"
+#include "../boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/sb_board/display_blanking.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -731,6 +732,32 @@ int port_selftest(void) {
     check(writes==before,"OTA check never submits a Raspberry Pi update command");
     check(original_test_text("OTA runs on the ESP32 board"),"simulator honestly reports it cannot run board OTA");
     sb_sim_capture("integration-updates-en.bmp");
+    /* Exercise the board's pure LVGL blanker with the actual renderer, not GPIO. */
+    sb_display_blanking blanker={0};
+    lv_display_t *display=lv_display_get_default();
+    uint32_t children=lv_obj_get_child_count(lv_display_get_layer_sys(display));
+    sb_display_blanking_set(&blanker,display,true);
+    lv_obj_update_layout(blanker.mask);
+    check(blanker.mask && lv_obj_get_parent(blanker.mask)==lv_display_get_layer_sys(display),
+          "blackout is above every application page and dialog");
+    check(lv_obj_get_width(blanker.mask)==800 && lv_obj_get_height(blanker.mask)==480,
+          "blackout covers the entire rotated display");
+    check(lv_obj_has_flag(blanker.mask,LV_OBJ_FLAG_CLICKABLE),"blackout intercepts hidden controls");
+    lv_obj_t *same_mask=blanker.mask;
+    for(int i=0;i<100;i++) sb_display_blanking_set(&blanker,display,true);
+    check(blanker.mask==same_mask && lv_obj_get_child_count(lv_display_get_layer_sys(display))==children+1,
+          "repeated blanking does not allocate more overlays");
+    sb_sim_capture("integration-blank-mask.bmp");
+    sb_display_blanking_set(&blanker,display,false);
+    check(lv_obj_has_flag(blanker.mask,LV_OBJ_FLAG_HIDDEN),"wake restores the existing application without resetting it");
+    for(int i=0;i<100;i++) {
+        sb_display_blanking_set(&blanker,display,true);
+        sb_display_blanking_set(&blanker,display,false);
+    }
+    check(lv_obj_get_child_count(lv_display_get_layer_sys(display))==children+1,
+          "repeated sleep and wake reuse the same mask");
+    sb_sim_capture("integration-blank-restored.bmp");
+    lv_obj_delete(blanker.mask);
     fprintf(report, "\n%d checks, %d failures. Isolated data only; no physical hardware tested.\n",
             checks, failures);
     fclose(report);

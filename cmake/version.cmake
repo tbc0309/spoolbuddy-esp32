@@ -1,5 +1,5 @@
 # Firmware version follows the tested upstream release, never a separate product number.
-set(SB_FIRMWARE_BUILD 6 CACHE STRING "OTA build revision within the upstream version")
+set(SB_FIRMWARE_BUILD 7 CACHE STRING "OTA build revision within the upstream version")
 if(NOT SB_FIRMWARE_BUILD MATCHES "^[0-9]+$")
     message(FATAL_ERROR "SB_FIRMWARE_BUILD must be an unsigned integer")
 endif()
