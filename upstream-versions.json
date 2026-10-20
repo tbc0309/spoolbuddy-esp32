@@ -1,0 +1,16 @@
+{
+  "checked_on": "2026-10-17",
+  "bambuddy": {
+    "repository": "https://github.com/maziggy/bambuddy",
+    "latest_release": "v1.2.5.7",
+    "release_commit": "188df76f8a7342542c0876dac68990ea2a8c8313",
+    "tested_main_commit": "0d4275107a7349eb34019c7db3e809b20dc4a927",
+    "spoolbuddy_source": "Integrated frontend/src/pages/spoolbuddy, frontend/src/components/spoolbuddy, spoolbuddy/daemon and backend/app/api/routes/spoolbuddy.py",
+    "spoolbuddy_diff_release_to_tested_main": false
+  },
+  "reference": {
+    "repository": "https://github.com/macpit/spoolbuddy",
+    "commit": "dca6cd61444a3cb7b5963606e204b83287ee3257",
+    "usage": "Native UI interaction patterns; no Pico dependency or backend substitution"
+  }
+}

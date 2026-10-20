@@ -1,0 +1,75 @@
+{
+  "repository": "https://github.com/maziggy/bambuddy",
+  "commit": "0d4275107a7349eb34019c7db3e809b20dc4a927",
+  "normalization": "LF",
+  "files": {
+    "en": {
+      "source": "frontend/src/i18n/locales/en.ts",
+      "sha256": "b04015d41176b84e96165a1979be564fa69816d18a40b4d63d258b4030cbe7d2"
+    },
+    "zh-CN": {
+      "source": "frontend/src/i18n/locales/zh-CN.ts",
+      "sha256": "cf0a005be2a71a92c8727d3b377b34c937566789a30320731fb6c0f923817566"
+    },
+    "pages/spoolbuddy/SpoolBuddyAmsPage.tsx": {
+      "sha256": "63ce22f261bdd446d98771ab90eb768976760c7473f653fa8a6ed939b7e2782a"
+    },
+    "pages/spoolbuddy/SpoolBuddyCalibrationPage.tsx": {
+      "sha256": "612f4e76ad5b968f72ee01de6d883ed14b895991fc5d44bcfabdcb6c970396b1"
+    },
+    "pages/spoolbuddy/SpoolBuddyDashboard.tsx": {
+      "sha256": "1e3ba03aac60cc55cb1f56f7618fad631c0c2e7018021aaf3ae1e7d4c878ffe3"
+    },
+    "pages/spoolbuddy/SpoolBuddyInventoryPage.tsx": {
+      "sha256": "803915b1c26dd098008c803be01185f21200264a251ae94745e674a3cb898174"
+    },
+    "pages/spoolbuddy/SpoolBuddySettingsPage.tsx": {
+      "sha256": "7a7fa9c52bdc8d029e49ea3ae0c008406844f45f667573ac8d349051b7c229c7"
+    },
+    "pages/spoolbuddy/SpoolBuddyWriteTagPage.tsx": {
+      "sha256": "187b5fbf269bf05bcc3257f3e41907ddb1eb10173a023e0ff56fe7538b6326b0"
+    },
+    "components/spoolbuddy/AmsUnitCard.tsx": {
+      "sha256": "60d2381b801f95077e8acb8f55074bbb5615e6c17efa340c534db137920703ee"
+    },
+    "components/spoolbuddy/AssignToAmsModal.tsx": {
+      "sha256": "2e437ee9560c341683aa1f5714a50017f5d11cff1b35a347c554c5719edbb47d"
+    },
+    "components/spoolbuddy/DiagnosticModal.tsx": {
+      "sha256": "688d35ef015f15f7a9b2b314551accd1f57281743200f4355858d40a27fe73bb"
+    },
+    "components/spoolbuddy/InventorySpoolInfoCard.tsx": {
+      "sha256": "8ba9dad5df745adf93486a18f33f8ad820dbdb98f50a4648640e2dc906b6310b"
+    },
+    "components/spoolbuddy/LinkSpoolModal.tsx": {
+      "sha256": "f8c5f6b15a142212715c784d988bfa6fd39825a0f86f52375e52fc27d726f434"
+    },
+    "components/spoolbuddy/SpoolBuddyBottomNav.tsx": {
+      "sha256": "cbc5ff1e5d703dc96b9351a1205c62298dd981a240cc4d27df3a0acbc9506c60"
+    },
+    "components/spoolbuddy/SpoolBuddyLayout.tsx": {
+      "sha256": "ceeadea82131d4449e4032ed6f6781cb190b9fe987a84f1850ca33664b762a5a"
+    },
+    "components/spoolbuddy/SpoolBuddyQuickMenu.tsx": {
+      "sha256": "03086c6dfb396762792ceebeeba6ccb965eb062ecd898e5b70b19634a751a02e"
+    },
+    "components/spoolbuddy/SpoolBuddyStatusBar.tsx": {
+      "sha256": "4a4fbc648e8f47f55de22957961dcdc0149ce9d763f20e412812828659852dc7"
+    },
+    "components/spoolbuddy/SpoolBuddyTopBar.tsx": {
+      "sha256": "d57f1ec51eaf5594d9261f95db2797db72c30c10aea8da9556e4b0f859cc55b3"
+    },
+    "components/spoolbuddy/SpoolIcon.tsx": {
+      "sha256": "8db300bfc1815b2e3170a5e1c607c22b191cd99f4dfef6c326dfda6d7a6744ba"
+    },
+    "components/spoolbuddy/SpoolInfoCard.tsx": {
+      "sha256": "65a2ea2f85d32edf477dcc098bb532a8236faf633a418ee1e21fde19bdd4191e"
+    },
+    "components/spoolbuddy/TagDetectedModal.tsx": {
+      "sha256": "0a91a923adb2384b384f86ec30d071217fffd2e56e937f305b8d272993b41c8d"
+    },
+    "components/spoolbuddy/WeightDisplay.tsx": {
+      "sha256": "3f1f4d26dcff0adc43f44122ad7c2026c990673113f0a7703256276e1693a42f"
+    }
+  }
+}

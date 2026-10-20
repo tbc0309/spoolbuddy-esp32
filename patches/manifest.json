@@ -1,0 +1,58 @@
+{
+  "default_profile": "upstream_parity",
+  "default_enabled": [],
+  "patches": [
+    {
+      "id": "manual_weight",
+      "directory": "manual_weight",
+      "option": "SB_ENABLE_MANUAL_WEIGHT",
+      "default": false,
+      "origin": "project-extension",
+      "upstream_equivalent": false,
+      "purpose": "Manual gross weight entry and override"
+    },
+    {
+      "id": "simulator_controls",
+      "directory": "simulator_controls",
+      "option": "SB_ENABLE_SIMULATOR_CONTROLS",
+      "default": false,
+      "origin": "local-simulator",
+      "upstream_equivalent": false,
+      "purpose": "F3/F4 local virtual NFC injection; Windows only"
+    },
+    {
+      "id": "confirm_actions",
+      "directory": "confirm_actions",
+      "option": "SB_ENABLE_ACTION_CONFIRMATION",
+      "default": false,
+      "origin": "local-safety-ui",
+      "upstream_equivalent": false,
+      "purpose": "Additional confirmation before all mutating actions"
+    },
+    {
+      "id": "legacy_ui",
+      "directory": "legacy_ui",
+      "default": false,
+      "buildable": false,
+      "origin": "historical-local-ui",
+      "purpose": "Archived custom UI and packaging scripts, never compiled"
+    },
+    {
+      "id": "macpit_reference",
+      "directory": "macpit",
+      "default": false,
+      "buildable": false,
+      "origin": "macpit-reference-review",
+      "purpose": "Review ledger; no non-upstream functionality adopted by default"
+    }
+  ],
+  "dependency_fixes": [
+    {
+      "id": "esp_hosted_rx_retry",
+      "directory": "esp_hosted_rx_retry",
+      "version": "2.13.0",
+      "automatically_applied": true,
+      "purpose": "Retain pending SDIO RX retries after an allocation failure"
+    }
+  ]
+}

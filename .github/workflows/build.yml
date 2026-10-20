@@ -1,0 +1,37 @@
+name: ESP-IDF board build
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: firmware-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  firmware:
+    runs-on: ubuntu-latest
+    container: espressif/idf:v6.1
+    strategy:
+      matrix:
+        board: [esp32-p4-wifi6-touch-lcd-4.3/rev3]
+        patches: ['OFF', 'ON']
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile selected board and profile
+        shell: bash
+        run: |
+          . "$IDF_PATH/export.sh"
+          idf.py -D 'SB_BOARD=${{ matrix.board }}' -D SB_UI_PREVIEW=OFF -D SB_ENABLE_MANUAL_WEIGHT=${{ matrix.patches }} -D SB_ENABLE_ACTION_CONFIRMATION=${{ matrix.patches }} build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: firmware-${{ matrix.patches }}
+          path: |
+            build/spoolbuddy_port.bin
+            build/bootloader/bootloader.bin
+            build/partition_table/partition-table.bin
+            build/ota_data_initial.bin
+            build/flasher_args.json
+            build/flash_args
+            build/sb-board-id.txt

@@ -1,0 +1,8 @@
+--- a/host/drivers/transport/sdio/sdio_drv.c
++++ b/host/drivers/transport/sdio/sdio_drv.c
+@@ -1201,0 +1202,2 @@
++		/* Retrying unread bytes must not require a new, already cleared interrupt. */
++		bool retry_pending = pending;
+@@ -1250 +1252 @@
+-		if (!(BIT(SDIO_INT_NEW_PACKET) & interrupts)) {
++		if (!(BIT(SDIO_INT_NEW_PACKET) & interrupts) && !retry_pending) {

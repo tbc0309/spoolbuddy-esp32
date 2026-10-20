@@ -1,0 +1,14 @@
+{
+  "wifi": {
+    "ssid": "YOUR_WIFI_SSID",
+    "password": "YOUR_WIFI_PASSWORD"
+  },
+  "bambuddy": {
+    "url": "http://192.168.1.100:8000",
+    "api_key": ""
+  },
+  "ota": {
+    "manifest_url": "https://api.github.com/repos/tbc0309/spoolbuddy-esp32/contents/ota.json?ref=main",
+    "github_token": ""
+  }
+}

@@ -1,0 +1,11 @@
+# Firmware version follows the tested upstream release, never a separate product number.
+set(SB_FIRMWARE_BUILD 6 CACHE STRING "OTA build revision within the upstream version")
+if(NOT SB_FIRMWARE_BUILD MATCHES "^[0-9]+$")
+    message(FATAL_ERROR "SB_FIRMWARE_BUILD must be an unsigned integer")
+endif()
+file(READ "${CMAKE_CURRENT_LIST_DIR}/../upstream-versions.json" SB_UPSTREAM_METADATA)
+string(JSON SB_UPSTREAM_RELEASE GET "${SB_UPSTREAM_METADATA}" bambuddy latest_release)
+string(REGEX REPLACE "^v" "" SB_PORT_VERSION "${SB_UPSTREAM_RELEASE}")
+if(NOT SB_PORT_VERSION MATCHES "^[0-9]+\\.[0-9]+\\.[0-9]+(\\.[0-9]+)?$")
+    message(FATAL_ERROR "Invalid upstream release version")
+endif()

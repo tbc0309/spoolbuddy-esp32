@@ -1,0 +1,41 @@
+menu "SpoolBuddy"
+config SB_OTA_MANIFEST_URL
+    string "Project OTA manifest URL (HTTPS)"
+    default "https://api.github.com/repos/tbc0309/spoolbuddy-esp32/contents/ota.json?ref=main"
+config SB_WIFI_SSID
+    string "Wi-Fi SSID"
+    default ""
+config SB_WIFI_PASSWORD
+    string "Wi-Fi password"
+    default ""
+config SB_BACKEND_URL
+    string "Bambuddy URL (without /api/v1)"
+    default "http://192.168.1.100:8000"
+config SB_API_KEY
+    string "Bambuddy API key"
+    default ""
+config SB_NFC
+    bool "Enable PN5180"
+    default y
+config SB_NFC_SCK
+    int "PN5180 SCK GPIO"
+    default -1
+config SB_NFC_MOSI
+    int "PN5180 MOSI GPIO"
+    default -1
+config SB_NFC_MISO
+    int "PN5180 MISO GPIO"
+    default -1
+config SB_NFC_CS
+    int "PN5180 NSS GPIO"
+    default -1
+config SB_NFC_BUSY
+    int "PN5180 BUSY GPIO"
+    default -1
+config SB_NFC_RST
+    int "PN5180 RST GPIO"
+    default -1
+config SB_SCALE
+    bool "Enable NAU7802 on the board I2C bus"
+    default y
+endmenu

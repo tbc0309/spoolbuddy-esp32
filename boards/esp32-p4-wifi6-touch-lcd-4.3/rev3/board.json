@@ -1,0 +1,30 @@
+{
+  "id": "esp32-p4-wifi6-touch-lcd-4.3/rev3",
+  "artifact_id": "waveshare-p4-43-rev3",
+  "chip": "esp32p4",
+  "revision": "Rev3.x",
+  "resolution": [
+    800,
+    480
+  ],
+  "hardware_tested": true,
+  "defaults": "sdkconfig.defaults",
+  "partitions": "partitions.csv",
+  "component": "sb_board",
+  "features": {
+    "boot_sleep": {
+      "default": true,
+      "option": "SB_ENABLE_BOOT_SLEEP",
+      "source": "features/boot_sleep/boot_sleep.c"
+    }
+  },
+  "hardware_validation": {
+    "display_touch": true,
+    "wifi_bambuddy": true,
+    "tf_config_and_update": true,
+    "boot_sleep": true,
+    "nfc": false,
+    "scale": false,
+    "https_ota": false
+  }
+}

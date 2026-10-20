@@ -1,0 +1,22 @@
+# Local additions are opt-in. The default product tracks upstream behaviour.
+option(SB_ENABLE_MANUAL_WEIGHT "Enable patches/manual_weight" OFF)
+option(SB_ENABLE_SIMULATOR_CONTROLS "Enable patches/simulator_controls" OFF)
+set(SB_PATCH_SOURCES)
+set(SB_PATCH_INCLUDES "${SB_ROOT}/patches/manual_weight")
+set(SB_PATCH_DEFINITIONS)
+if(SB_ENABLE_MANUAL_WEIGHT)
+    list(APPEND SB_PATCH_SOURCES "${SB_ROOT}/patches/manual_weight/manual_weight.c")
+    list(APPEND SB_PATCH_DEFINITIONS SB_ENABLE_MANUAL_WEIGHT=1)
+else()
+    list(APPEND SB_PATCH_SOURCES "${SB_ROOT}/src/core/optional_features.c")
+endif()
+if(SB_ENABLE_SIMULATOR_CONTROLS)
+    list(APPEND SB_PATCH_DEFINITIONS SB_ENABLE_SIMULATOR_CONTROLS=1)
+endif()
+
+option(SB_ENABLE_ACTION_CONFIRMATION "Enable patches/confirm_actions" OFF)
+if(SB_ENABLE_ACTION_CONFIRMATION)
+    list(APPEND SB_PATCH_SOURCES "${SB_ROOT}/patches/confirm_actions/confirm_actions.c")
+
+    list(APPEND SB_PATCH_DEFINITIONS SB_ENABLE_ACTION_CONFIRMATION=1)
+endif()

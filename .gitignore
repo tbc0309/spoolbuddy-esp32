@@ -1,0 +1,22 @@
+/upstream/
+/.tools/
+/build*/
+/outputs/
+/managed_components/
+/sdkconfig
+/sdkconfig.old
+/sdkconfig.local
+/sdkconfig.*.generated*
+__pycache__/
+/simulator/build/
+/simulator/build-*/
+/sdcard/spoolbuddy.json
+/simulator/spoolbuddy.json
+/simulator/runtime/
+
+/.pytest_cache/
+
+# Local environment secrets (keep distributable examples).
+.env
+.env.*
+!.env.example

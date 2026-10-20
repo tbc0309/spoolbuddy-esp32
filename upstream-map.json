@@ -1,0 +1,130 @@
+{
+  "repository": "https://github.com/maziggy/bambuddy",
+  "commit": "0d4275107a7349eb34019c7db3e809b20dc4a927",
+  "version": "1.2.5.7",
+  "local_layers": {
+    "ui": "src/ui",
+    "portable_logic": "src/core",
+    "esp_idf": "src/platform/esp_idf",
+    "drivers": "src/drivers/esp_idf",
+    "board": "boards",
+    "non_upstream": "patches"
+  },
+  "tracked_sources": [
+    {
+      "area": "ui",
+      "path": "frontend/src/pages/spoolbuddy/SpoolBuddyDashboard.tsx",
+      "sha256": "38f20323f349a5ae05e36e5129c31317b1db10d81cdc1f85d903d91616297f7d"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/pages/spoolbuddy/SpoolBuddyInventoryPage.tsx",
+      "sha256": "9dcb749a83ef5df61cb4f909fd341eed4016537717d2c5f4301f1cde44edcbbd"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/pages/spoolbuddy/SpoolBuddyWriteTagPage.tsx",
+      "sha256": "d271ed5f4aa3251442bf7a5954a02b0ac84b621777b3288cc39c459dc8ca6691"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/pages/spoolbuddy/SpoolBuddySettingsPage.tsx",
+      "sha256": "c3605cdc3f4ad5ec670998056c6851cc2d90b21de306f01ca46267ca5dc27d7b"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spoolbuddy/SpoolBuddyLayout.tsx",
+      "sha256": "34468eeb82678a34b061deb94907c11d6172a05858e8643ee80f04550ed1aeef"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spoolbuddy/InventorySpoolInfoCard.tsx",
+      "sha256": "8444366ca0d98b97500356c927329fdd8c34a87e0848000d081aff8be6031a77"
+    },
+    {
+      "area": "api",
+      "path": "backend/app/api/routes/spoolbuddy.py",
+      "sha256": "03ed54a0963ecbccf1fb5a04498dafc775c9b50b4eccc1da7e74c3315b7cdb55"
+    },
+    {
+      "area": "api",
+      "path": "backend/app/schemas/spoolbuddy.py",
+      "sha256": "3c4058bd6c8c685294954fd6e77fbcd4b09b1b4c40e37c59b060b830dcf0c831"
+    },
+    {
+      "area": "api",
+      "path": "backend/app/schemas/spool.py",
+      "sha256": "d4ef15dd246a1f6212be996ccba3dbb7e12e13a08f5707bb7286279e3993cd2f"
+    },
+    {
+      "area": "api",
+      "path": "frontend/src/api/client.ts",
+      "sha256": "5ba65bf47d1e20582c2da7e991243b6e8514fe3e8a8df859fae1295fddccfec8"
+    },
+    {
+      "area": "hardware",
+      "path": "spoolbuddy/daemon/scale_reader.py",
+      "sha256": "225da111571b43b7a47018fe87f98e651964184c9f9c08b213e1a8ba37afb457"
+    },
+    {
+      "area": "hardware",
+      "path": "spoolbuddy/daemon/system_stats.py",
+      "sha256": "2b19af02dc7e4388822ae50c44577f31e1e1c3d7f16dea8a83ba22221e3609f1"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spool-form/ColorSection.tsx",
+      "sha256": "d6992b6c8cbb78b37af1316e5e2dcf6f94e5cf3be11c3aa749a050a1f77e696a"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spool-form/PAProfileSection.tsx",
+      "sha256": "a7e3661a11843ab96ccc36ea8c1b69387df534541e60d94cdcf2e3f20d87509b"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spool-form/utils.ts",
+      "sha256": "96e80721a07c843f19f5334ef589320796b4d4a4ea2d4ecf3365cb12dc0e9e2c"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spool-form/types.ts",
+      "sha256": "57daaccd3ab56ea5edbc27c9c763f876d826e2ace84e9a9a904afec6adb30eb4"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spool-form/AdditionalSection.tsx",
+      "sha256": "fbe4ba5025f28ea2966af4b168fcfd9148a67443e0c538606aed3b667b251127"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spoolbuddy/SpoolBuddyQuickMenu.tsx",
+      "sha256": "cf5a11c73cb411995e02b007cd00fd74472ba4c9b3b1829011ac7febfeec4d05"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/ConfigureAmsSlotModal.tsx",
+      "sha256": "7df6b80bccbe2440e83efc2911796da1f635e1057826e14802c478081425ed48"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/hooks/useWebSocket.ts",
+      "sha256": "3047358ccd865884a23cf774a4ac7f8e256eabf85a1cb142a2952a482f0fe5d3"
+    },
+    {
+      "area": "api",
+      "path": "backend/app/api/routes/websocket.py",
+      "sha256": "a1886c44163b72c447b0bbed3c0d0a2918ba6fc40ba859c35156a8433a16769f"
+    },
+    {
+      "area": "api",
+      "path": "backend/app/api/routes/auth.py",
+      "sha256": "f72827493a9b36fa99b311c3bc8cd698a6609f1bc4d52941225106826e70694f"
+    },
+    {
+      "area": "ui",
+      "path": "frontend/src/components/spoolbuddy/SpoolBuddyTopBar.tsx",
+      "sha256": "4debcd0f26bf774265844b43b8685fa674400d923dbf217cff1fd45f1b7c784d"
+    }
+  ]
+}

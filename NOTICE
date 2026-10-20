@@ -1,0 +1,18 @@
+SpoolBuddy ESP32
+Copyright (C) 2026 SpoolBuddy ESP32 contributors.
+
+An independent ESP32 port derived from Bambuddy / SpoolBuddy:
+https://github.com/maziggy/bambuddy
+Original upstream authors retain copyright in their respective contributions.
+
+Port modifications dated 2026-10-20 include C/LVGL UI adaptation, ESP-IDF
+platform services, board support, configuration storage and firmware updates.
+
+Distributed under GNU Affero General Public License, version 3 or (at your
+option) any later version. See LICENSE. Provided without warranty.
+Third-party libraries, fonts and icons retain their own notices and licenses;
+see THIRD_PARTY.md and bundled license files.
+
+Corresponding source and build instructions:
+https://github.com/tbc0309/spoolbuddy-esp32
+Use the source archive/tag corresponding to the downloaded firmware release.
