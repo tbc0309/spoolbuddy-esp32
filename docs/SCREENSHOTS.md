@@ -1,9 +1,9 @@
 # 界面截图 / Screenshot gallery
 
 由生产 LVGL 界面的隔离演示数据生成，尺寸 800×480。
-它们用于布局复查，不代表实板 NFC、称重或所有动态状态已验收。
+截图展示模拟器中的页面布局与演示数据。
 
-Generated from production LVGL widgets with isolated demonstration data at 800×480. These images support layout review; they do not certify physical NFC, weighing or every dynamic state.
+Generated from production LVGL widgets with isolated demonstration data at 800×480. The images show simulator layouts and demonstration data.
 
 更新方式：先运行 `simulator/test_simulator.py`，再运行 `tools/update_screenshots.py`（需要 Pillow）。
 

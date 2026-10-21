@@ -15,7 +15,7 @@ The baseline is the Bambuddy commit in `upstream-versions.json`. Original React 
 | Settings System | `ui_system.h`, `core/system_stats.c` | Original web cards and fields with ESP32 statistics; no Linux loadavg or Python fields |
 | Header, navigation, quick menu | `ui_original.c` | Original icons, i18n keys and clock format; quick actions follow platform capabilities |
 
-Embedded bilingual widget strings were replaced with i18n keys. Original dictionaries and React English defaults are pinned in `vendor`; missing Chinese and platform text are supplemented only in `locales`. Known status messages follow language changes. Embedded layouts follow the original interaction structure and adapt to screen and platform capabilities.
+Widgets use i18n keys for bilingual text. Original dictionaries and React English defaults are pinned in `vendor`; missing Chinese and platform text are supplemented only in `locales`. Known status messages follow language changes. Embedded layouts follow the original interaction structure and adapt to screen and platform capabilities.
 
 ## Following upstream updates
 

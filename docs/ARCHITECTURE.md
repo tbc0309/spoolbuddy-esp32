@@ -33,7 +33,7 @@ locales/                   本地补译、平台专用文案，不修改上游�
 
 公共 `src/core`、`src/ui` 不包含 BSP 头或具体引脚。ESP-IDF 平台可依赖 SDK，但只能通过 `ports/board.h` 调用板服务。板依赖留在该机型的 `sb_board/idf_component.yml`；只有选中的板组件进入构建。分区、芯片最低修订版、PSRAM 和 Wi-Fi 协处理器均归机型，不放到公共默认值。
 
-主板硬件功能不再统一归入 patches：BOOT 休眠实现属于当前板的 features，
+主板硬件功能放在机型目录中：BOOT 休眠实现属于当前板的 features，
 由 board.cmake 选择源文件和编译定义，默认开启，可用 SB_ENABLE_BOOT_SLEEP=OFF 关闭。
 公共 UI 仅调用能力接口，模拟器和未来其他主板不会编译这块板的 GPIO 处理。
 patches 继续只存与主板无关的非原版产品扩展，例如手动称重。
