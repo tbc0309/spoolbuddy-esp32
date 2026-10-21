@@ -12,6 +12,12 @@
   "partitions": "partitions.csv",
   "component": "sb_board",
   "features": {
+    "power_save": {
+      "default": true,
+      "source": "features/power_save/settings.c",
+      "runtime_setting": "Settings / Display",
+      "mode": "connected_idle_light_sleep"
+    },
     "boot_sleep": {
       "default": true,
       "option": "SB_ENABLE_BOOT_SLEEP",
@@ -23,6 +29,7 @@
     "wifi_bambuddy": true,
     "tf_config_and_update": true,
     "boot_sleep": true,
+    "power_save": true,
     "nfc": false,
     "scale": false,
     "https_ota": false

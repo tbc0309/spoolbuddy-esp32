@@ -23,7 +23,7 @@ Settings → Updates fits on one screen. Checking for an update automatically do
 In an ESP-IDF v6.1 environment:
 
 ```powershell
-./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 7
+./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 8
 ./simulator/build.ps1 -Integration
 ./simulator/build/spoolbuddy_sim.exe --config ./simulator/runtime/local-bambuddy.json --connect
 ```
@@ -58,6 +58,8 @@ Compatible with Bambuddy **1.2.5.7**. See [release files](docs/en/RELEASING.md).
 | `docs`, `docs/screenshots` | Chinese/English documentation and screenshots |
 
 BOOT sleep is enabled by default on this board and preserves ROM download mode; disable it with `-BootSleep $false`. Manual weight, virtual NFC and additional confirmation require explicit `-LocalPatches` and are off by default. The ESP-Hosted RX dependency fix applies automatically. UI, JSON, networking and TLS prefer PSRAM; task stacks, required DMA and low-level drivers retain internal memory.
+
+Settings → Display provides a board-local [idle light-sleep switch](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md) for both timeout and BOOT blanking. Networking and page state are retained, with no dynamic frequency scaling while running. Disabling it retains ordinary blanking. Battery-life and temperature improvements require physical current and temperature measurements.
 
 New boards receive separate `boards` and build directories. Update shared code first, then validate each board without duplicating pages. [Architecture](docs/en/ARCHITECTURE.md) · [Upstream parity](docs/en/UPSTREAM_PARITY.md) · [Installation and wiring](docs/en/INTEGRATION_NOTES.md) · [Third-party notices](THIRD_PARTY.md)
 

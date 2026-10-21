@@ -9,6 +9,7 @@
 #include "settings.h"
 #include "i18n.h"
 #include "update.h"
+#include "optional_power.h"
 #ifdef SB_ENABLE_ACTION_CONFIRMATION
 #include "optional_ui.h"
 #endif
@@ -1222,6 +1223,7 @@ static void settings(void) {
         char percent[16];
         snprintf(percent, sizeof(percent), "%d%%", sb_live.enabled ? sb_live.brightness : 100);
         text(b, percent, 714, 43, 40, TEXT, &small);
+        sb_power_settings(b, sb_settings.chinese);
         lv_obj_t *timeout = rect(content, 0, 89, 759, 168, CARD, 6);
         text(timeout, tr("spoolbuddy.settings.screenBlank"), 14, 14, 730, TEXT, &regular);
         text(

@@ -188,5 +188,6 @@
   "port.InvalidOtaManifest": "更新清单无效或不兼容",
   "port.OtaDowngradeRejected": "不允许降级固件",
   "port.NoHttpsImageUrl": "更新清单中没有 HTTPS 镜像地址",
-  "port.ImageSizeMismatch": "固件大小不匹配"
+  "port.ImageSizeMismatch": "固件大小不匹配",
+  "board.sleepAfterBlank": "熄屏后自动省电休眠"
 }

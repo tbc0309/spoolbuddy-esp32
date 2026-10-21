@@ -153,5 +153,6 @@
   "port.InvalidOtaManifest": "Invalid or incompatible ota.json",
   "port.OtaDowngradeRejected": "OTA downgrade rejected",
   "port.NoHttpsImageUrl": "No HTTPS firmware URL in ota.json",
-  "port.ImageSizeMismatch": "Firmware size mismatch"
+  "port.ImageSizeMismatch": "Firmware size mismatch",
+  "board.sleepAfterBlank": "Power saving after screen off"
 }

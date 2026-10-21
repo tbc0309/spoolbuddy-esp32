@@ -23,7 +23,7 @@
 在 ESP-IDF v6.1 环境中：
 
 ```powershell
-./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 7
+./tools/build_firmware.ps1 -Board esp32-p4-wifi6-touch-lcd-4.3/rev3 -BuildDirectory build -BuildRevision 8
 ./simulator/build.ps1 -Integration
 ./simulator/build/spoolbuddy_sim.exe --config ./simulator/runtime/local-bambuddy.json --connect
 ```
@@ -58,6 +58,8 @@ python tools/update_screenshots.py
 | `docs`、`docs/screenshots` | 中英文文档与界面截图 |
 
 当前主板 BOOT 休眠默认开启且保留 ROM 下载功能；可用 `-BootSleep $false` 关闭。手动重量、虚拟 NFC 和额外确认需显式 `-LocalPatches`，默认关闭。ESP-Hosted RX 兼容修复自动应用，不属于产品扩展开关。PSRAM 优先用于界面、JSON、网络和 TLS，内部内存保留给任务栈、必要 DMA 和底层驱动。
+
+设置 → 显示中的“熄屏后自动省电休眠”控制本板的[空闲轻睡眠](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md)，同时适用于超时和 BOOT 熄屏。它保留网络及页面状态，运行时不动态降频；关闭后保留普通熄屏。电池续航与温升改善仍需电流、温度实测。
 
 新增机型使用独立的 `boards` 目录及构建目录，先更新公共层再分别复验各板；不复制整套页面。[架构](docs/ARCHITECTURE.md) · [原版差异](docs/UPSTREAM_PARITY.md) · [接线](docs/INTEGRATION_NOTES.md) · [来源和许可](THIRD_PARTY.md)
 

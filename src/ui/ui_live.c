@@ -4,6 +4,7 @@
 #include "ui_original.h"
 #include "ui_platform.h"
 #include "optional_sleep.h"
+#include "optional_power.h"
 #include "settings.h"
 #include "i18n.h"
 #include "lvgl.h"
@@ -15,6 +16,7 @@ void ui_init(void) {
     sb_live.enabled = true;
     original_init(sb_settings.chinese);
     sb_sleep_init();
+    sb_power_init(ui_wake);
 }
 void ui_status(const char *text) {
     sb_display_lock();

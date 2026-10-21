@@ -19,6 +19,8 @@ SpoolBuddy ESP32 implements an embedded client using C/LVGL and ESP-IDF. Shared 
 
 Only `esp32-p4-wifi6-touch-lcd-4.3/rev3` is currently buildable/supported. `rev1_3` is historical reference.
 
+The board-local [screen-off power saving feature](../../boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md) connects initialization and display settings through `optional_power.h`. Sleep sequencing, touch polling and display hardware lifecycle remain private to this board.
+
 Shared core/UI must not include BSP headers or concrete pins. SDK platform code accesses board services through `ports/board.h`. Board dependencies remain in that board's `sb_board/idf_component.yml`; only the selected board enters the build. Partitions, minimum chip revision, PSRAM and Wi-Fi coprocessor settings are board-owned.
 
 BOOT sleep lives in the board's `features/boot_sleep`, selected through `board.cmake`; it defaults on and can be disabled with `SB_ENABLE_BOOT_SLEEP=OFF`. Shared UI calls capability interfaces, so simulator/future boards do not compile this board's GPIO handling. Board-independent manual weight, virtual NFC and additional confirmation remain opt-in patches. Original search, color catalog and calibration remain shared behavior; correctness fixes such as calibration units and integer-gram submission are not optional extensions.

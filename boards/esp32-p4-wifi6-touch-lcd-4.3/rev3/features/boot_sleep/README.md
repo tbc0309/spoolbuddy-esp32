@@ -30,8 +30,11 @@ enabled). Screen blanking and touch wake have been checked on Rev3.x.
 Electrical power consumption has not been measured.
 
 Display blanking uses an opaque black system-layer mask and zero PWM brightness,
-while keeping the DSI panel scan and frame-complete interrupts active. This avoids
-turning the panel off underneath the adapter's asynchronous double-buffer waits.
+while keeping the DSI panel scan and frame-complete interrupts active during the
+initial blanking phase. The separate [power-saving feature](../power_save/README.md)
+can subsequently drain/pause the adapter and put the display hardware to sleep.
+With power saving disabled, DSI scanning remains active. This avoids turning the
+panel off underneath the adapter's asynchronous double-buffer waits.
 It does not disconnect backlight power: AP3032 EN is tied to the supply. Physical
 black level and long-duration wake reliability must be checked on the target board.
 

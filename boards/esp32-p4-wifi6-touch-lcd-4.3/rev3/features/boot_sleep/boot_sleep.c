@@ -4,10 +4,15 @@
 #include "board.h"
 #include "ui.h"
 #include "ui_live.h"
+#include "ui_platform.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
 #include "lvgl.h"
-static bool sleeping;
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <stdatomic.h>
+#include "esp_timer.h"
+static atomic_bool sleeping;
 static sb_boot_button button;
 static int pin;
 bool sb_sleep_blank(void) { return sleeping; }
@@ -21,13 +26,19 @@ static void touch(lv_event_t *e) {
     lv_indev_stop_processing(input);
     ui_wake();
 }
-static void poll(lv_timer_t *timer) {
-    (void)timer;
-    if (sb_boot_button_poll(&button, gpio_get_level(pin) == 0, lv_tick_get())) {
-        sleeping = !sleeping;
-        if (!sleeping) ui_wake();
-        ui_idle_tick();
-        ESP_LOGI("boot_sleep", "%s", sleeping ? "screen asleep" : "screen awake");
+static void poll(void *unused) {
+    (void)unused;
+    for (;;) {
+        vTaskDelay(pdMS_TO_TICKS(20));
+        if (sb_boot_button_poll(&button, gpio_get_level(pin) == 0,
+                                (uint32_t)(esp_timer_get_time() / 1000))) {
+            sb_display_lock();
+            sleeping = !sleeping;
+            if (!sleeping) ui_wake();
+            ui_idle_tick();
+            sb_display_unlock();
+            ESP_LOGI("boot_sleep", "%s", sleeping ? "screen asleep" : "screen awake");
+        }
     }
 }
 void sb_sleep_init(void) {
@@ -41,12 +52,12 @@ void sb_sleep_init(void) {
         .intr_type = GPIO_INTR_DISABLE};
     if (gpio_config(&cfg) != ESP_OK) return;
     button.raw = gpio_get_level(pin) == 0;
-    button.changed = lv_tick_get();
+    button.changed = (uint32_t)(esp_timer_get_time() / 1000);
     lv_indev_t *input = NULL;
     while ((input = lv_indev_get_next(input)))
         if (lv_indev_get_type(input) == LV_INDEV_TYPE_POINTER)
             lv_indev_add_event_cb(input, touch, LV_EVENT_PRESSED, NULL);
-    lv_timer_create(poll, 20, NULL);
+    if (xTaskCreate(poll, "boot_button", 4096, NULL, 2, NULL) != pdPASS) return;
     initialized = true;
     ESP_LOGI("boot_sleep", "enabled GPIO%d; release to arm", pin);
 }

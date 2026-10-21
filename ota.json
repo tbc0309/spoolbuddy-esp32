@@ -4,10 +4,10 @@
     {
       "board": "esp32-p4-wifi6-touch-lcd-4.3/rev3",
       "version": "1.2.5.7",
-      "build": 7,
+      "build": 8,
       "file": "spoolbuddy.bin",
-      "size": 4256656,
-      "sha256": "013b9558043a5f1db2425275f5f3c1d2ecf2dfcdcb5b84ad87cd1674839ec2a7",
+      "size": 4292192,
+      "sha256": "0bd91804714b59d39279e6a5f63eed02d9e02ba057262ea3a8ce12fe851e8e4a",
       "url": "https://github.com/tbc0309/spoolbuddy-esp32/releases/download/v1.2.5.7/spoolbuddy-waveshare-p4-43-rev3-1.2.5.7.bin"
     }
   ]

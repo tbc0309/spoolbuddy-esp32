@@ -2,13 +2,15 @@
 
 [简体中文](../HARDWARE_VALIDATION.md)
 
-Platform: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x, 32 MiB Flash; Bambuddy 1.2.5.7. Recorded on 2026-10-20.
+Platform: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x, 32 MiB Flash; Bambuddy 1.2.5.7. Updated on 2026-10-21.
 
 | Feature | Status |
 |---|---|
 | Display, touch and navigation | Passed on hardware |
-| BOOT sleep and touch wake | Passed using a black mask and zero brightness while retaining DSI scan; power consumption not measured |
-| Continuous 35-minute blanking | All 66 backend samples online with continuous uptime; touch restored the display without reboot |
+| BOOT blanking | Passed; display power is not electrically disconnected and current consumption is not measured |
+| Timeout light sleep and recovery | Two approximately 82-second cycles; all 26 samples online, continuous uptime and no reset; over 12,000 successful light-sleep entries recorded |
+| Touch and BOOT wake from light sleep | Both physically confirmed with the current firmware |
+| Previous 35-minute ordinary blanking | Passed without light sleep in the previous revision; not a 35-minute light-sleep validation |
 | TF configuration, NVS and boot without a card | Passed; timestamps, dual-bank persistence and fallback also tested in software |
 | TF firmware installation, reboot and boot confirmation | Passed on hardware |
 | Wi-Fi, registration, heartbeats and inventory reads | Passed on hardware |

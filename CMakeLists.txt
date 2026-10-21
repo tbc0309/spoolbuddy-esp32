@@ -33,6 +33,9 @@ set(PROJECT_VER "${SB_PORT_VERSION}")
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
 idf_build_set_property(MINIMAL_BUILD ON)
 project(spoolbuddy_port VERSION ${SB_PORT_VERSION})
+if(DEFINED SB_BOARD_POST_PROJECT)
+    include("${SB_BOARD_POST_PROJECT}")
+endif()
 if(TARGET idf::espressif__esp_hosted)
     execute_process(COMMAND "${PYTHON}" "${SB_ROOT}/patches/esp_hosted_rx_retry/apply.py"
         "${SB_ROOT}/managed_components/espressif__esp_hosted"

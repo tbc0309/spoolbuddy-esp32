@@ -19,6 +19,7 @@ boards/
       partitions.csv       本机型的分区
       sb_board/            私有 BSP、屏幕旋转、I²C/SD、依赖 manifest
       features/boot_sleep/ 本板 BOOT 按键、消抖及测试，主板默认开启
+      features/power_save/ 本板熄屏省电设置、BSP 生命周期修复及说明
     rev1_3/                历史配置参考，不声明为已支持机型
 patches/                   默认关闭的产品扩展，以及独立依赖兼容修复
 simulator/                 Windows 宿主、构建和原生交互测试
@@ -36,6 +37,8 @@ locales/                   本地补译、平台专用文案，不修改上游�
 由 board.cmake 选择源文件和编译定义，默认开启，可用 SB_ENABLE_BOOT_SLEEP=OFF 关闭。
 公共 UI 仅调用能力接口，模拟器和未来其他主板不会编译这块板的 GPIO 处理。
 patches 继续只存与主板无关的非原版产品扩展，例如手动称重。
+
+本板的[熄屏省电能力](../boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md)通过 `optional_power.h` 接口接入初始化和显示设置；公共代码不处理具体休眠时序、触摸轮询或显示硬件生命周期。
 
 ## 新增机型
 
