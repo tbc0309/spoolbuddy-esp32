@@ -45,7 +45,7 @@ Manifest parsing/version comparison live in `src/core/ota_manifest`; capabilitie
 
 Run `tools/check_upstream_changes.py --source upstream/bambuddy` after acquiring a new reference. It reports changed UI/API/hardware source without overwriting the port or enabling patches. Review shared changes, test them, update baseline hashes, then revalidate boards and extensions independently. React/Python to C/LVGL adaptation cannot be automatically merged across languages.
 
-Run `tools/generate_i18n.py` after refreshing translations. Keep original snapshots, local supplements, shared widgets and board BSP separate; do not restore bilingual conditionals in widgets. Original Linux tests remain unchanged; four ESP32 replacement tests in `tests/platform/test_esp32_system_stats.py` exercise production serialization with injected snapshots, while real collector values require hardware validation.
+Run `tools/generate_i18n.py` after refreshing translations. Keep original snapshots, local supplements, shared widgets and board BSP separate; do not restore bilingual conditionals in widgets. Original Linux tests remain unchanged. ESP32 statistics use SDK collectors and shared serialization, with tests in `tests/platform/test_esp32_system_stats.py`.
 
 `patches/esp_hosted_rx_retry` automatically fixes ESP-Hosted 2.13.0 SDIO retry conditions after allocation failure. It is a dependency fix, not an opt-in product extension, and changes neither SpoolBuddy resources nor GPIO. Unknown dependency source layouts stop the build; re-review when upgrading.
 

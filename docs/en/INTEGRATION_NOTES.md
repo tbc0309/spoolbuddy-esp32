@@ -14,4 +14,4 @@ Supported hardware: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 **Rev3.x**, 32 MiB Fl
 | SCK / MOSI / MISO | 2 / 3 / 4 |
 | CS / BUSY / RST | 5 / 21 / 22 |
 
-These are software defaults from the board directory. PN5180 and the weighing module still require physical wiring and electrical validation. A successful build or simulator fixture does not certify peripherals. NAU7802 shares the BSP I²C bus supplied by `sb_board`; check the board schematic before wiring.
+These are the board software defaults. PN5180 and the weighing module require external wiring. NAU7802 shares the BSP I²C bus supplied by `sb_board`; match wiring and module voltage to the board schematic.

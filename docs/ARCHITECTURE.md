@@ -79,7 +79,7 @@ python tools/check_upstream_changes.py --source upstream/bambuddy
 
 工具只报告需复核的 UI/API/硬件源码，不覆盖移植代码，也不自动启用补丁。根据变更分类更新公共适配，运行原生和后端测试，最后经审查更新基线哈希。机型私有文件和本地补丁分别复验，避免把旧扩展重新揉进原版实现。
 
-原版 Linux 测试文件保持上游原样；项目的 ESP32 替代验收是 `tests/platform/test_esp32_system_stats.py` 的四项测试。它验证生产序列化器和注入快照；SDK 采集器经过固件编译，真实硬件数值仍需连接板后验收。
+原版 Linux 测试文件保持上游原样。ESP32 统计由 SDK 采集器和公共序列化器提供；对应测试位于 `tests/platform/test_esp32_system_stats.py`。
 
 上游 React/Python 与嵌入式 C/LVGL 属于不同实现，变更检查用于定位需要复核的来源，不承诺跨语言页面的一键自动合并。原版更新先适配公共层，再单独复验各机型和 opt-in 补丁。
 

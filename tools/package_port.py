@@ -1,4 +1,4 @@
-"""Package the verified board application, factory image, TF update and Windows simulator."""
+"""Package firmware assets; retain simulator and validation files locally."""
 from pathlib import Path
 import argparse
 import hashlib
@@ -143,7 +143,12 @@ def main():
     path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
     files.append(path)
     (out / 'SHA256SUMS.txt').write_text(''.join(f'{sha(p)}  {p.name}\n' for p in files), encoding='ascii')
-    print(json.dumps({'directory': str(out), 'version': version, 'board': board_id, 'assets': len(files) + 1}))
+    local = out.with_name(out.name + '-local')
+    local.mkdir(parents=True, exist_ok=True)
+    for support in (simulator, licenses, path, out / 'SHA256SUMS.txt'):
+        shutil.move(str(support), str(local / support.name))
+    print(json.dumps({'directory': str(out), 'local_directory': str(local),
+                      'version': version, 'board': board_id, 'assets': 3}))
 
 
 if __name__ == '__main__':

@@ -42,7 +42,7 @@ First boot confirms the new image after display initialization, Wi-Fi and Bambud
 
 SHA-256 verifies integrity against the HTTPS manifest; it is not an independent signature. Secure Boot and signing-key provisioning are not enabled.
 
-The Windows simulator displays update controls but does not write Flash. Parsing, board matching, version/revision comparison and manifest generation have isolated tests. Complete HTTPS installation and intentional failure rollback still require physical validation; USB flashing is not OTA validation.
+The Windows simulator displays update controls without writing Flash. Firmware installation runs on the board.
 
 ## Language and TF updates
 

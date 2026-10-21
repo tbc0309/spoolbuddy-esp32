@@ -21,4 +21,4 @@ This is an independent community port of Bambuddy's integrated SpoolBuddy, distr
 
 Upstream provenance and hashes are recorded in `vendor/spoolbuddy/i18n/provenance.json`, `upstream-versions.json` and `upstream-map.json`. The original React/Python application is adapted to C/LVGL and ESP-IDF; board integration, storage and firmware updates are project modifications dated 2026-10-20.
 
-Release archives include project notices and license files. `licenses.zip` accompanies standalone firmware binaries. Corresponding source/build scripts are available through the matching Release source archive and tag; SDK/dependency sources are resolved from pinned upstream locations. Names identify compatibility and provenance and do not imply endorsement.
+The TF firmware package includes project notices and license files. Licensing and dependency notices are also available in the repository and matching source archive. Corresponding source/build scripts are available through the matching Release source archive and tag; SDK/dependency sources are resolved from pinned upstream locations. Names identify compatibility and provenance and do not imply endorsement.

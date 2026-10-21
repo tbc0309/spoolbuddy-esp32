@@ -6,20 +6,20 @@
 upstream/bambuddy/frontend/src/pages/spoolbuddy，控件在 components/spoolbuddy。
 此检出目录为参考，不混入移植修改；vendor/spoolbuddy 是可追溯的资源快照。
 
-| 原版入口 | 公共移植实现 | 当前核对情况 |
+| 原版入口 | 公共移植实现 | 当前实现 |
 | --- | --- | --- |
-| 首页 /spoolbuddy | src/ui/ui_original.c | 标签、耗材、称重状态、链接与同步操作有原生回调测试；真实 NFC/称重仍需接外设验收 |
-| /ams | ui_original.c、ui_ams_config.h | 槽位、关联、配置及 PA 选择使用原版接口，有隔离回归；实机打印机动作未全部物理验收 |
-| /write-tag | ui_original.c、ui_form_catalog.h | 三种写入模式、表单、目录和 PA 功能有模拟器及真实隔离后端测试；实际写标签仍需外设 |
-| /inventory | ui_original.c、ui_inventory_detail.h | 库存、搜索、详情、编辑、分配和解绑有回归；用户自定义名称和后端错误不强制翻译 |
-| 设置 Device/Display/Scale | ui_original.c | 显示和校准接口已接入；补齐当前重量、偏移、系数。原版独立 /calibration 页面仍由 LVGL 校准弹窗承载，布局尚非逐像素一致 |
-| 设置 Updates | ui_updates.h + ports/update.h | 平台必要差异：本项目 HTTPS OTA / TF 更新替代 Pi SSH；真实安装与回滚须单列实板记录 |
-| 设置 System | ui_system.h + core/system_stats.c | 按原网页卡片与字段；FreeRTOS 不伪造 Linux loadavg/Python。仅上报原网页使用的字段 |
-| 顶栏、底栏、快捷菜单 | ui_original.c | 原始图标资源、i18n 键、时间格式；Pi 服务/浏览器动作不能直接等同 MCU 行为，按能力处理 |
+| 首页 /spoolbuddy | src/ui/ui_original.c | 标签、耗材、称重状态、链接和同步 |
+| /ams | ui_original.c、ui_ams_config.h | AMS 槽位、关联、配置和 PA 选择 |
+| /write-tag | ui_original.c、ui_form_catalog.h | 三种写入模式、表单、耗材目录和 PA 功能 |
+| /inventory | ui_original.c、ui_inventory_detail.h | 库存、搜索、详情、编辑、分配和解绑；保留用户名称及后端错误文本 |
+| 设置 Device/Display/Scale | ui_original.c | 设备与显示设置、当前重量、偏移和校准系数；独立校准入口由 LVGL 弹窗承载 |
+| 设置 Updates | ui_updates.h + ports/update.h | HTTPS OTA 与 TF 更新替代 Pi SSH 更新 |
+| 设置 System | ui_system.h + core/system_stats.c | 原网页卡片与字段，提供 ESP32 统计；不提供 Linux loadavg 或 Python 信息 |
+| 顶栏、底栏、快捷菜单 | ui_original.c | 原始图标资源、i18n 键和时间格式；按平台能力提供快捷操作 |
 
 控件通过 i18n 键读取文本。原字典和 React 的英文默认文案按提交
 保存于 vendor，缺失中文及平台专用内容仅补充到 locales。底部已显示的已知状态
-提示也会随语言切换。不得将本表理解为已完成所有实物测试或全部像素级一致。
+提示也会随语言切换。嵌入式页面保留原版交互结构，按屏幕与平台能力适配布局。
 
 ## 后续上游更新顺序
 

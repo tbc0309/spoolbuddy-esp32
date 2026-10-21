@@ -61,8 +61,7 @@ SHA-256 用于与 HTTPS 索引核对完整性，不是独立签名。设备不�
 协议依据：[GitHub Contents API](https://docs.github.com/en/rest/repos/contents)、
 [GitHub Release assets API](https://docs.github.com/en/rest/releases/assets)。
 
-Windows 模拟器只展示更新入口，不写 ESP32 Flash。镜像解析、板型匹配、
-版本/修订比较、发布索引生成均进行隔离测试。真实 OTA 安装和失败回滚仍需全链路实板验收，不能把 USB 刷机当作 OTA 验收通过。
+Windows 模拟器展示更新入口，不写 ESP32 Flash。实际固件更新由主板安装器完成。
 
 ## 界面语言
 

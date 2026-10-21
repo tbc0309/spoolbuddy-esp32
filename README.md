@@ -4,9 +4,9 @@
 
 将 Bambuddy 集成的 SpoolBuddy 移植到 **Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x**：ESP-IDF v6.1、LVGL 9.5.0、800×480 横屏、简体中文与英语。复用原版资源、i18n 和 API，公共实现与各主板私有内容分开维护。
 
-[固件与模拟器下载](https://github.com/tbc0309/spoolbuddy-esp32/releases/tag/v1.2.5.7) · [截图](docs/SCREENSHOTS.md) · [当前范围](docs/PORT_STATUS.md) · [硬件验收](docs/HARDWARE_VALIDATION.md)
+[固件下载](https://github.com/tbc0309/spoolbuddy-esp32/releases/tag/v1.2.5.7) · [截图](docs/SCREENSHOTS.md) · [当前范围](docs/PORT_STATUS.md) · [主板功能](docs/HARDWARE_VALIDATION.md)
 
-显示、触摸、TF 配置、无卡启动、Wi-Fi/Bambuddy 连接、BOOT 熄屏唤醒和 TF 固件更新已做实板验证。PN5180、NAU7802 外设、HTTPS OTA 完整下载及失败回滚仍待实板验收；不宣称所有动态页面已逐像素等价。
+提供显示与触摸操作、Wi-Fi/Bambuddy 联网、TF/NVS 配置、无卡启动、OTA/TF 更新，以及 BOOT 熄屏与触摸唤醒。NFC 和称重功能需要连接对应外设。
 
 ## 安装与配置
 
@@ -28,7 +28,7 @@
 ./simulator/build/spoolbuddy_sim.exe --config ./simulator/runtime/local-bambuddy.json --connect
 ```
 
-模拟器使用生产 LVGL 控件和业务逻辑；它是 Windows 原生宿主程序，不模拟 P4 指令或外设电气行为。配置中的 Wi-Fi 不改变电脑网络。另可运行外观夹具：`./simulator/build.ps1`，不会访问真实后端。新版发布包内附配置样例。
+模拟器使用生产 LVGL 控件和业务逻辑；它是 Windows 原生宿主程序，不模拟 P4 指令或外设电气行为。配置中的 Wi-Fi 不改变电脑网络。另可运行外观夹具：`./simulator/build.ps1`，不会访问真实后端。模拟器从源码构建，配置样例位于 `sdcard/spoolbuddy.example.json`；Release 仅提供固件。
 
 ## 测试与发布
 
@@ -59,7 +59,7 @@ python tools/update_screenshots.py
 
 当前主板 BOOT 休眠默认开启且保留 ROM 下载功能；可用 `-BootSleep $false` 关闭。手动重量、虚拟 NFC 和额外确认需显式 `-LocalPatches`，默认关闭。ESP-Hosted RX 兼容修复自动应用，不属于产品扩展开关。PSRAM 优先用于界面、JSON、网络和 TLS，内部内存保留给任务栈、必要 DMA 和底层驱动。
 
-设置 → 显示中的“熄屏后自动省电休眠”控制本板的[空闲轻睡眠](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md)，同时适用于超时和 BOOT 熄屏。它保留网络及页面状态，运行时不动态降频；关闭后保留普通熄屏。电池续航与温升改善仍需电流、温度实测。
+设置 → 显示中的“熄屏后自动省电休眠”控制本板的[空闲轻睡眠](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md)，同时适用于超时和 BOOT 熄屏。它保留网络及页面状态，运行时不动态降频；关闭后保留普通熄屏。实际功耗取决于供电、外设和后台活动。
 
 新增机型使用独立的 `boards` 目录及构建目录，先更新公共层再分别复验各板；不复制整套页面。[架构](docs/ARCHITECTURE.md) · [原版差异](docs/UPSTREAM_PARITY.md) · [接线](docs/INTEGRATION_NOTES.md) · [来源和许可](THIRD_PARTY.md)
 

@@ -8,7 +8,7 @@
 
 显示恢复失败会重试，不主动复位主板。若休眠期间发生异常复位，下次启动会暂时关闭本次启动的省电休眠，避免连续崩溃；设置中的开关会反映这个状态。该保护不修改保存的开关偏好。
 
-硬件边界：AP3032 的 EN 接电源，软件不能切断背光驱动供电；DSI PHY 电源保留。空闲休眠不等于整板断电，也不保证特定电池续航。节电量和温升需要电流及温度实测。频繁后台活动或驱动锁可能缩短或阻止轻睡眠。
+硬件边界：AP3032 的 EN 接电源，软件不能切断背光驱动供电；DSI PHY 电源保留。空闲休眠不等于整板断电，也不保证特定电池续航。实际功耗取决于供电、外设和后台活动。频繁后台活动或驱动锁可能缩短或阻止轻睡眠。
 
 `apply_bsp.py` 仅修复本板 BSP 的显示生命周期：共享 PHY 电源只申请一次，失败恢复时初始化清理句柄。脚本可重复执行，遇到未知源码结构会停止构建。
 
@@ -22,6 +22,6 @@ GT911 INT is not wired on this board. A separate task polls touch every 100 ms w
 
 Failed display recovery is retried without deliberately resetting the board. If a reset occurs during sleep, the next boot temporarily disables power saving to avoid a crash loop; the switch reflects that state. The saved preference is unchanged.
 
-AP3032 EN is tied to the supply, and the DSI PHY supply remains enabled. Idle sleep is not board power-off. Battery life, current savings and temperature changes require physical measurements; background activity and driver locks can prevent light sleep.
+AP3032 EN is tied to the supply, and the DSI PHY supply remains enabled. Idle sleep is not board power-off. Power consumption depends on the supply, peripherals and background activity; driver locks can prevent light sleep.
 
 The idempotent board-local BSP adaptation makes shared PHY acquisition repeatable and initializes failure-cleanup handles. Unknown source layouts stop the build.

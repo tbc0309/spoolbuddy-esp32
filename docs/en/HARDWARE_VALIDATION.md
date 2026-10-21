@@ -1,24 +1,20 @@
-# Validation scope
+# Board capabilities and operation
 
 [简体中文](../HARDWARE_VALIDATION.md)
 
-Platform: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x, 32 MiB Flash; Bambuddy 1.2.5.7. Updated on 2026-10-21.
+Target: Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x, 32 MiB Flash, 800×480 landscape. Compatible with Bambuddy 1.2.5.7.
 
-| Feature | Status |
+| Feature | Current behavior |
 |---|---|
-| Display, touch and navigation | Passed on hardware |
-| BOOT blanking | Passed; display power is not electrically disconnected and current consumption is not measured |
-| Timeout light sleep and recovery | Two approximately 82-second cycles; all 26 samples online, continuous uptime and no reset; over 12,000 successful light-sleep entries recorded |
-| Touch and BOOT wake from light sleep | Both physically confirmed with the current firmware |
-| Previous 35-minute ordinary blanking | Passed without light sleep in the previous revision; not a 35-minute light-sleep validation |
-| TF configuration, NVS and boot without a card | Passed; timestamps, dual-bank persistence and fallback also tested in software |
-| TF firmware installation, reboot and boot confirmation | Passed on hardware |
-| Wi-Fi, registration, heartbeats and inventory reads | Passed on hardware |
-| PSRAM and system statistics | Allocation probe and backend field checks passed |
-| Adaptive update layout | Native bilingual coverage for idle, checking, available version, download, verification, reboot, error and no update |
-| PN5180 / NAU7802 | Physical wiring validation pending |
-| HTTPS OTA / intentional rollback | Complete hardware end-to-end validation pending |
+| Display and touch | LVGL pages, bottom navigation and touch controls |
+| Networking | Onboard C6 Wi-Fi; inventory, printer and AMS data from Bambuddy |
+| Configuration | Initial TF import, onboard NVS persistence, previous valid configuration and boot without a card |
+| Updates | HTTPS OTA and TF installation share image checks, inactive-slot writes and boot confirmation |
+| Power saving | Optional connected idle light sleep for timeout and BOOT blanking; page state retained |
+| Wake | Touch or a short BOOT press/release; the waking touch is consumed |
+| Memory | UI and large buffers prefer PSRAM; necessary allocations retain internal memory |
+| NFC / weighing | PN5180 / NAU7802 drivers and application interfaces require corresponding peripherals and wiring |
 
-Short-duration network testing covered five minutes after reboot; all 120 pings of 1400 bytes returned. This does not establish hours-long stability. Release `release-manifest.json` identifies the image SHA-256, SDK and tested scope.
+Light sleep retains active CPU frequency, PSRAM refresh and active GPIO state without entering deep sleep. AP3032 EN is tied to the supply, so software cannot disconnect backlight power. Actual consumption depends on hardware and background activity.
 
-Automated tests use isolated data. Simulator screenshots support layout review; they do not certify every sensor, electrical behavior or real printer action.
+The simulator runs shared LVGL pages and business logic, without emulating ESP32 electronics or Flash writes. See [installation](INTEGRATION_NOTES.md) and [OTA](OTA.md).

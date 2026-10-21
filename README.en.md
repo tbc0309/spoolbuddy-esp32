@@ -4,9 +4,9 @@
 
 A port of Bambuddy's integrated SpoolBuddy to **Waveshare ESP32-P4-WIFI6-Touch-LCD-4.3 Rev3.x**: ESP-IDF v6.1, LVGL 9.5.0, 800×480 landscape, Simplified Chinese and English. Original resources, translation keys and APIs are reused; shared implementation and board-specific code are maintained separately.
 
-[Firmware and simulator](https://github.com/tbc0309/spoolbuddy-esp32/releases/tag/v1.2.5.7) · [Complete inline screenshot gallery](docs/SCREENSHOTS.md) · [Port status](docs/en/PORT_STATUS.md) · [Hardware validation](docs/en/HARDWARE_VALIDATION.md)
+[Firmware downloads](https://github.com/tbc0309/spoolbuddy-esp32/releases/tag/v1.2.5.7) · [Complete inline screenshot gallery](docs/SCREENSHOTS.md) · [Port status](docs/en/PORT_STATUS.md) · [Board capabilities](docs/en/HARDWARE_VALIDATION.md)
 
-Display, touch, TF configuration, boot without a card, Wi-Fi/Bambuddy connectivity, BOOT screen sleep/touch wake and TF firmware installation have been tested on hardware. PN5180, NAU7802, a complete HTTPS OTA download/install and intentional failure rollback remain unverified. Exact visual equivalence for every dynamic state is not claimed.
+Provides display and touch controls, Wi-Fi/Bambuddy connectivity, TF/NVS configuration, boot without a card, OTA/TF updates, BOOT blanking and touch wake. NFC and weighing require the corresponding peripherals.
 
 ## Installation and configuration
 
@@ -28,7 +28,7 @@ In an ESP-IDF v6.1 environment:
 ./simulator/build/spoolbuddy_sim.exe --config ./simulator/runtime/local-bambuddy.json --connect
 ```
 
-The Windows simulator runs production LVGL widgets and business logic. It does not emulate P4 instructions or electrical peripherals; its Wi-Fi configuration does not change the computer's network. `./simulator/build.ps1` builds an isolated appearance fixture without contacting a real backend. The Release simulator archive includes an example configuration and launcher.
+The Windows simulator runs production LVGL widgets and business logic. It does not emulate P4 instructions or electrical peripherals; its Wi-Fi configuration does not change the computer's network. `./simulator/build.ps1` builds an isolated appearance fixture without contacting a real backend. Build the simulator from source and use `sdcard/spoolbuddy.example.json` as a configuration template. Releases contain firmware only.
 
 ## Tests and releases
 
@@ -59,7 +59,7 @@ Compatible with Bambuddy **1.2.5.7**. See [release files](docs/en/RELEASING.md).
 
 BOOT sleep is enabled by default on this board and preserves ROM download mode; disable it with `-BootSleep $false`. Manual weight, virtual NFC and additional confirmation require explicit `-LocalPatches` and are off by default. The ESP-Hosted RX dependency fix applies automatically. UI, JSON, networking and TLS prefer PSRAM; task stacks, required DMA and low-level drivers retain internal memory.
 
-Settings → Display provides a board-local [idle light-sleep switch](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md) for both timeout and BOOT blanking. Networking and page state are retained, with no dynamic frequency scaling while running. Disabling it retains ordinary blanking. Battery-life and temperature improvements require physical current and temperature measurements.
+Settings → Display provides a board-local [idle light-sleep switch](boards/esp32-p4-wifi6-touch-lcd-4.3/rev3/features/power_save/README.md) for both timeout and BOOT blanking. Networking and page state are retained, with no dynamic frequency scaling while running. Disabling it retains ordinary blanking. Actual power consumption depends on the power supply, peripherals and background activity.
 
 New boards receive separate `boards` and build directories. Update shared code first, then validate each board without duplicating pages. [Architecture](docs/en/ARCHITECTURE.md) · [Upstream parity](docs/en/UPSTREAM_PARITY.md) · [Installation and wiring](docs/en/INTEGRATION_NOTES.md) · [Third-party notices](THIRD_PARTY.md)
 
